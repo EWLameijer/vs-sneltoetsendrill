@@ -34,7 +34,7 @@ void GiveBug(char ch)
         Console.WriteLine($"'{ch}' is an invalid choice");
         return;
     }
-    Console.Write(bug?.Name + ": ");
+    Console.Write(bug.Name + ": ");
     bug.Abilities.ToList().ForEach(x => Console.Write(x + " "));
     Console.WriteLine();
     Console.WriteLine("Press any key...");
