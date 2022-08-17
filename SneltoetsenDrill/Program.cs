@@ -24,17 +24,19 @@ char AskChoice() => Console.ReadKey(true).KeyChar;
 void GiveBug(char ch)
 {
     int index = ch - '0';
+    Bug bug = new();
     try
     {
-        Bug bug = bugService.Get(index);
-        Console.Write(bug.Name + ": ");
-        bug.Abilities.ToList().ForEach(x => Console.Write(x + " "));
-        Console.WriteLine();
+        bug = bugService.Get(index);
     }
     catch
     {
         Console.WriteLine($"'{ch}' is an invalid choice");
+        return;
     }
+    Console.Write(bug?.Name + ": ");
+    bug.Abilities.ToList().ForEach(x => Console.Write(x + " "));
+    Console.WriteLine();
     Console.WriteLine("Press any key...");
     AskChoice();
     Console.Clear();
